@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{ asset('panel/plugins/fontawesome-free/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('panel/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
     <link rel="stylesheet" href="{{ asset('panel/css/adminlte.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('panel/plugins/colorbox/colorbox.css') }}">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -36,7 +37,7 @@
             @include('admin.layout.sidebar')
         </aside>
 
-        <div class="content-wrapper">
+        <div class="content-wrapper @yield('content-class')">
             <section class="content-header">
                 <div class="container-fluid">
                     <div class="row mb-2">
@@ -71,8 +72,11 @@
     <script src="{{ asset('panel/plugins/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('panel/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('panel/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
+    <script src="{{ asset('panel/plugins/colorbox/jquery.colorbox.min.js') }}"></script>
+
     <script src="{{ asset('panel/js/adminlte.min.js') }}"></script>
     <script src="{{ asset('panel/js/demo.js') }}"></script>
+    <script src="{{ asset('panel/js/custom.js') }}"></script>
 
 </body>
 

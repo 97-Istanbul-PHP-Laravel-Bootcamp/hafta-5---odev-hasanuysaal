@@ -33,16 +33,18 @@
                             <tbody>
                                 @foreach ($partnerCursor as $partner)
                                     <tr>
-                                        <td><i class="nav-icon far fa-circle text-danger"></i></td>
+                                        <td><i class="nav-icon far fa-circle text-{{$partner->statusCode()}}"></i></td>
                                         <td>{{ $partner->name }}</td>
                                         <td>{{ $partner->cname }}</td>
                                         <td>{{ $partner->mpno }}</td>
                                         <td>{{ $partner->email }}</td>
 
                                         <td>
-                                            <a href="" class="btn btn-outline-primary btn-md">
+                                            <a href="{{ route('admin.partner.edit', ['partner_id' => $partner->id]) }}"
+                                                class="btn btn-outline-primary btn-md">
                                                 <i class="fa fa-edit"></i> Düzenle</a>
-                                            <a href="" class="btn btn-outline-danger btn-md">
+                                            <a href="{{ route('admin.partner.delete', ['partner_id' => $partner->id]) }}"
+                                                class="btn btn-outline-danger btn-md">
                                                 <i class="fa fa-trash"></i> Sil</a>
                                         </td>
 
@@ -51,7 +53,7 @@
                             </tbody>
                         </table>
                     </div>
-                   
+
                     <div class="card-footer clearfix">
                         <ul class="pagination pagination-sm m-0 float-right">
                             <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
