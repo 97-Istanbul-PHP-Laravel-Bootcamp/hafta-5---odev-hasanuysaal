@@ -74,9 +74,13 @@
     <script src="{{ asset('panel/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
     <script src="{{ asset('panel/plugins/colorbox/jquery.colorbox.min.js') }}"></script>
 
+    <script src="{{ asset('panel/plugins/moment/moment.min.js') }}"></script>
+    <script src="{{ asset('panel/plugins/inputmask/jquery.inputmask.min.js') }}"></script>
     <script src="{{ asset('panel/js/adminlte.min.js') }}"></script>
     <script src="{{ asset('panel/js/demo.js') }}"></script>
     <script src="{{ asset('panel/js/custom.js') }}"></script>
+
+    @yield('custom_js')
 
 </body>
 

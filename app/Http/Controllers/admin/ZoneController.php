@@ -12,7 +12,7 @@ class ZoneController extends Controller
     public function index(Request $request)
     {
         $data_ = [
-            'title' => 'Bölgeler ve Noktalar',
+            'title' => 'Bölgeler ve Lokasyonlar',
             'country_' => Zone::getCountry_(),
             'zoneCursor' => []
         ];
@@ -26,7 +26,7 @@ class ZoneController extends Controller
 
         if ($request->get('zone_id')) {
             $zone = Zone::findOrFail($request->get('zone_id'));
-            $data_['locationCursor'] = Location::where('zone_id', $zone->id)->get();
+            $data_['locationCursor'] = Location::where('zone_id', $zone->id)->whereIn('status', ['a','p'])->get();
         }
 
         return view('admin.zone.index', $data_);
@@ -67,5 +67,15 @@ class ZoneController extends Controller
         );
 
         return redirect()->route('admin.zone', ['country_id' => $request->get('country_id')]);
+    }
+
+    public function delete(Request $request)
+    {
+        $zone = Zone::findOrFail($request->get('zone_id'));
+        $country_id = $zone->country_id;
+        Location::deleteByZoneID($zone->id);
+        $zone->delete();
+
+        return redirect()->route('admin.zone', ['country_id' => $country_id]);
     }
 }

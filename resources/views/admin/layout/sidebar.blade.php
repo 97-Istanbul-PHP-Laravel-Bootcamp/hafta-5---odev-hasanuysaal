@@ -30,6 +30,22 @@
                     </p>
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="{{route('admin.zone')}}" class="nav-link">
+                    <i class="nav-icon fas fa-map-marked-alt"></i>
+                    <p>
+                        Bölgeler ve Lokasyonlar
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{route('admin.hotel')}}" class="nav-link">
+                    <i class="nav-icon fas fa-hotel"></i>
+                    <p>
+                        Oteller
+                    </p>
+                </a>
+            </li>
         </ul>
     </nav>
 </div>

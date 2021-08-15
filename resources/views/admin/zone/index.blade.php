@@ -58,8 +58,8 @@
                                     class="btn btn-tool j-modal">
                                     <i class="fas fa-pen"></i>
                                 </a>
-                                <a href="{{ route('admin.zone.edit', ['zone_id' => $zone->id]) }}"
-                                    class="btn btn-tool j-modal">
+                                <a href="{{ route('admin.zone.delete', ['zone_id' => $zone->id]) }}"
+                                    class="btn btn-tool" onclick="return areYouSureDelete()">
                                     <i class="fas fa-trash"></i>
                                 </a>
                             </div>
@@ -74,8 +74,13 @@
         <div class="card card-row card-default">
             <div class="card-header bg-info">
                 <h3 class="card-title">
-                    Noktalar
+                    Lokasyonlar
                 </h3>
+                <div class="card-tools">
+                    <a href="{{ route('admin.location.edit' , ['zone_id' => request()->get('zone_id')]) }}" class="btn btn-tool j-modal">
+                        <i class="fas fa-plus" style="color:#fff"></i>
+                    </a>
+                </div>
             </div>
             <div class="card-body">
                 @foreach ($locationCursor as $location)
@@ -83,12 +88,12 @@
                         <div class="card-header">
                             <h5 class="card-title">{{ $location->name }} </h5>
                             <div class="card-tools">
-                                <a href="{{ route('admin.location.edit', ['location_id' => $location->id]) }}"
+                                <a href="{{ route('admin.location.edit', ['location_id' => $location->id,'zone_id' => request()->get('zone_id')]) }}"
                                     class="btn btn-tool j-modal">
                                     <i class="fas fa-pen"></i>
                                 </a>
-                                <a href="{{ route('admin.location.edit', ['location_id' => $location->id]) }}"
-                                    class="btn btn-tool j-modal">
+                                <a href="{{ route('admin.location.delete', ['location_id' => $location->id]) }}"
+                                    class="btn btn-tool" onclick="return areYouSureDelete()">
                                     <i class="fas fa-trash"></i>
                                 </a>
                             </div>

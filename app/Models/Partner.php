@@ -19,14 +19,19 @@ class Partner extends Model
     ];
 
 
-    public function statusCode()
+    public static function get_($prm_ = null)
     {
-        $arr_ = [
-            'a' => 'success',
-            'p' => 'danger',
-            't' => 'warning'
-        ];
+        if (!$prm_['status']) {
+            $prm_['status']  = 'a';
+        }
 
-        return $arr_[$this->status];
+        $partnerCursor = Partner::where($prm_)->get();
+
+        foreach ($partnerCursor as $partner) {
+            $res_[$partner->id] = $partner->name;
+        }
+
+        return $res_;
     }
+
 }

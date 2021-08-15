@@ -14,38 +14,44 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header text-right">
-                        <a href="{{ route('admin.partner.edit') }}" class="btn btn-md btn-outline-secondary">+ Partner
+                        <a href="{{ route('admin.hotel.edit') }}" class="btn btn-md btn-outline-secondary">+ Otel
                             Ekle</a>
                     </div>
-                    <!-- /.card-header -->
                     <div class="card-body">
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th style="width: 3%">#</th>
-                                    <th style="width: 20%">Partner Adı</th>
-                                    <th style="width: 20%">Yetkili</th>
-                                    <th style="width: 20%">Telefon</th>
-                                    <th style="width: 20%">E-posta</th>
-                                    <th width="width: 5%"></th>
+                                    <th width="10">#</th>
+                                    <th>Otel Adı</th>
+                                    <th>Dönemler</th>
+                                    <th width="115"></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($partnerCursor as $partner)
+                                @foreach ($hotelCursor as $hotel)
                                     <tr>
-                                        <td><i class="nav-icon far fa-circle text-{{ statusCSS($partner->status)}}"></i></td>
-                                        <td>{{ $partner->name }}</td>
-                                        <td>{{ $partner->cname }}</td>
-                                        <td>{{ $partner->mpno }}</td>
-                                        <td>{{ $partner->email }}</td>
-
                                         <td>
-                                            <a href="{{ route('admin.partner.edit', ['partner_id' => $partner->id]) }}"
+                                            <i
+                                                class="nav-icon far fa-circle text-{{ statusCSS($hotel->status) }}"></i>
+                                        </td>
+                                        <td>{{ $hotel->name }}</td>
+                                        <td>
+                                            <a href="{{ route('admin.term.edit', ['obj' => 'HOTEL', 'obj_id' => $hotel->id]) }}"
+                                                class="btn btn-sm btn-outline-primary j-modal">Ekle</a>
+                                            @forelse ($term_[$hotel->id] as $term)
+                                                <a href="{{ route('admin.term.edit', ['obj' => 'HOTEL', 'obj_id' => $hotel->id, 'term_id' => $term->id]) }}"
+                                                    class="btn btn-outline-secondary btn-sm j-modal">{{ $term->showDates() }}</a>
+                                            @empty
+
+                                            @endforelse
+                                        </td>
+                                        <td style="text-align: right">
+                                            <a href="{{ route('admin.hotel.edit', ['hotel_id' => $hotel->id]) }}"
                                                 class="btn btn-outline-primary btn-md">
-                                                <i class="fa fa-edit"></i> Düzenle</a>
-                                            <a href="{{ route('admin.partner.delete', ['partner_id' => $partner->id]) }}"
+                                                <i class="fa fa-edit"></i></a>
+                                            <a href="{{ route('admin.hotel.delete', ['hotel_id' => $hotel->id]) }}"
                                                 class="btn btn-outline-danger btn-md">
-                                                <i class="fa fa-trash"></i> Sil</a>
+                                                <i class="fa fa-trash"></i></a>
                                         </td>
 
                                     </tr>

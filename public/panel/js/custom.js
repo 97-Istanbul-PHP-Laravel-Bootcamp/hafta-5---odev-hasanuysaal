@@ -16,6 +16,10 @@ var handlePluginColorbox = function(){
     $('.j-modal').colorbox();
 };
 
+var areYouSureDelete = function(){
+    return confirm('Silmek istediğinize emin misiniz?');
+}
+
 function log(text){
     console.log(text);
 }

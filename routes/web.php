@@ -5,6 +5,8 @@ use App\Http\Controllers\admin\LoginController;
 use App\Http\Controllers\admin\PartnerController;
 use App\Http\Controllers\admin\ZoneController;
 use App\Http\Controllers\admin\LocationController;
+use App\Http\Controllers\admin\HotelController;
+use App\Http\Controllers\admin\TermController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -17,21 +19,35 @@ Route::prefix('admin')->name('admin')->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('.index');
         Route::get('/logout', [LoginController::class, 'logout'])->name('.logout');
 
-        // Partners
-        Route::get('/partner' , [PartnerController::class , 'index'])->name('.partner');
-        Route::get('/partner/edit' , [PartnerController::class , 'edit'])->name('.partner.edit');
-        Route::get('/partner/delete' , [PartnerController::class , 'delete'])->name('.partner.delete');
-        Route::post('/partner/save' , [PartnerController::class , 'save'])->name('.partner.save');
+        // Partner
+        Route::get('/partner', [PartnerController::class, 'index'])->name('.partner');
+        Route::get('/partner/edit', [PartnerController::class, 'edit'])->name('.partner.edit');
+        Route::get('/partner/delete', [PartnerController::class, 'delete'])->name('.partner.delete');
+        Route::post('/partner/save', [PartnerController::class, 'save'])->name('.partner.save');
 
-        // Zone and Locations
-        Route::get('/zone', [ZoneController::class,'index'])->name('.zone');
-        Route::get('/zone/edit', [ZoneController::class,'edit'])->name('.zone.edit');
-        Route::post('/zone/save', [ZoneController::class,'save'])->name('.zone.save');
+        // Zone
+        Route::get('/zone', [ZoneController::class, 'index'])->name('.zone');
+        Route::get('/zone/edit', [ZoneController::class, 'edit'])->name('.zone.edit');
+        Route::post('/zone/save', [ZoneController::class, 'save'])->name('.zone.save');
+        Route::get('/zone/delete', [ZoneController::class, 'delete'])->name('.zone.delete');
 
-        Route::get('/location/edit', [LocationController::class,'edit'])->name('.location.edit');
-        Route::post('/location/save', [LocationController::class,'save'])->name('.location.save');
+        // Location
+        Route::get('/location/edit', [LocationController::class, 'edit'])->name('.location.edit');
+        Route::post('/location/save', [LocationController::class, 'save'])->name('.location.save');
+        Route::get('/location/delete', [LocationController::class, 'delete'])->name('.location.delete');
+
+        // Hotel
+        Route::get('/hotel', [HotelController::class, 'index'])->name('.hotel');
+        Route::get('/hotel/edit', [HotelController::class, 'edit'])->name('.hotel.edit');
+        Route::get('/hotel/delete', [HotelController::class, 'delete'])->name('.hotel.delete');
+        Route::post('/hotel/save', [HotelController::class, 'save'])->name('.hotel.save');
+
+
+        // Term
+        Route::get('/term/edit', [TermController::class, 'edit'])->name('.term.edit');
+        Route::post('/term/save', [TermController::class, 'save'])->name('.term.save');
+        Route::get('/term/delete', [TermController::class, 'delete'])->name('.term.delete');
     });
-
 });
 
 Route::name('site')->group(function () {
