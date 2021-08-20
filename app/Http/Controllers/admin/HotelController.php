@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Hotel;
 use App\Models\Location;
 use App\Models\Partner;
+use App\Models\Room;
 use App\Models\Term;
 use Illuminate\Http\Request;
 
@@ -23,6 +24,13 @@ class HotelController extends Controller
         foreach($termCursor as $term){
             $data_['term_'][$term->obj_id][] = $term;
         }
+
+        $roomCursor = Room::where('status' , 'a')->get();
+
+        foreach($roomCursor as $room){
+            $data_['room_'][$room->hotel_id][] = $room;
+        }
+
         return view('admin.hotel.index', $data_);
     }
 
@@ -30,8 +38,8 @@ class HotelController extends Controller
     {
         $data_ = [
             'title' => "Otel Ekle/Düzenle",
-            'partner_' => Partner::get_(),
-            'location_' => Location::get_()
+            'partner_' => Partner::get(),
+            'location_' => Location::get()
         ];
 
         $data_['hotel'] = new Hotel();

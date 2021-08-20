@@ -7,7 +7,9 @@ use App\Http\Controllers\admin\ZoneController;
 use App\Http\Controllers\admin\LocationController;
 use App\Http\Controllers\admin\HotelController;
 use App\Http\Controllers\admin\TermController;
+use App\Http\Controllers\admin\RoomController;
 use Illuminate\Support\Facades\Route;
+
 
 
 Route::prefix('admin')->name('admin')->group(function () {
@@ -47,6 +49,11 @@ Route::prefix('admin')->name('admin')->group(function () {
         Route::get('/term/edit', [TermController::class, 'edit'])->name('.term.edit');
         Route::post('/term/save', [TermController::class, 'save'])->name('.term.save');
         Route::get('/term/delete', [TermController::class, 'delete'])->name('.term.delete');
+
+        // Room
+        Route::get('/room/edit', [RoomController::class, 'edit'])->name('.room.edit');
+        Route::post('/room/save', [RoomController::class, 'save'])->name('.room.save');
+        Route::get('/room/delete', [RoomController::class, 'delete'])->name('.room.delete');
     });
 });
 
